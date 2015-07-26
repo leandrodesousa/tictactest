@@ -30,43 +30,39 @@ public class TicTacToeGame {
 	/**
 	 * game method (controller of the game)
 	 */
-	static void game(){
+	public String game(){
 		boolean isGameAlive = true;
+		String result = "Game over!";
 		while(isGameAlive){
 			System.out.println(player + " - Type the line number (1 to 3): ");
 			line = scanner.nextInt();
 			if(line > 0){
 				line --;
-			} else {
+			} else if(line == 0 || line > 3){
 				System.out.println("Wrong number, game over!");
-				return;
-			}
-			if(line > 3){
-				System.out.println("Please, enter a number between 1 and 3!");
-				line = scanner.nextInt() - 1;
+				return result;
 			}
 			
 			System.out.println(player + " - Type the column number (1 to 3): ");
 			col = scanner.nextInt();
 			if(col > 0){
 				col --;
-			} else {
+			} else if(col == 0 || col > 3) {
 				System.out.println("Wrong number, game over!");
-				return;
-			}
-			if(col > 3){
-				System.out.println("Please, enter a number between 1 and 3!");
-				col = scanner.nextInt() - 1;
+				return result;
 			}
 			
-			if(!table[line][col].equals("_")){
+			if(table[line][col] != null && !table[line][col].equals("_")){
 				System.out.println("Type other numbers!");
 			} else {
 				table[line][col] = player;
 				
 				if(hasWinner(line, col)){
 					isGameAlive = false;
-					System.out.println("We have a winner! The player: " + player + "wins!!!");
+					System.out.println("We have a winner! The player: " + player + " wins!!!");
+					result = "We have a winner!";
+					
+					System.out.println(">>>" + table[line][col]);
 				}
 
 				if(player == "x"){
@@ -77,12 +73,14 @@ public class TicTacToeGame {
 			}
 			showTable();
 		}
+		
+		return result;
 	}
 	
 	/**
 	 * Method to show tictac table
 	 */
-	static void showTable(){
+	public void showTable(){
 		for(int i = 0; i < 3; i++){
 			for(int j = 0; j < 3; j++){
 				if(j == 2){
@@ -104,7 +102,7 @@ public class TicTacToeGame {
 	 * @param cNumber
 	 * @return
 	 */
-	static boolean hasWinner(int lNumber, int cNumber){
+	public boolean hasWinner(int lNumber, int cNumber){
 		
 		if(table[0][cNumber] == table[1][cNumber] && table[0][cNumber] == table[2][cNumber])
 			return true;

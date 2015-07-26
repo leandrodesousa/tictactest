@@ -12,7 +12,7 @@ public class App {
         ApplicationContext context = new FileSystemXmlApplicationContext("src/main/java/expedia/tictac/test/beans/beans.xml");
         
         TicTacToeGame ticTac = (TicTacToeGame) context.getBean("tictactoegame");
-        ticTac.main(args);
+        ticTac.main(args); 
         
         ((FileSystemXmlApplicationContext) context).close();
     }

@@ -13,26 +13,23 @@ public class AppTest
     /**
      * Create the test case
      *
-     * @param testName name of the test case
+     * @param isAlive name of the test case
      */
-    public AppTest( String testName )
-    {
-        super( testName );
+    public AppTest(String isAlive){
+        super(isAlive);
     }
 
     /**
      * @return the suite of tests being tested
      */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    public static Test suite(){
+        return new TestSuite(AppTest.class);
     }
 
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
-    {
+    public void testApp(){
         assertTrue( true );
     }
 }
